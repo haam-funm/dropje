@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.am.shipment</groupId>
+    <artifactId>shipment-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>shipment-parent</name>
+
+    <modules>
+        <module>shipment-common</module>
+        <module>shipment-service</module>
+        <module>shipment-datastore</module>
+        <module>shipment-application</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <junit.version>4.11</junit.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <dropwizard.version>2.0.2</dropwizard.version>
+        <dropwizard.bundles.version>2.0.2</dropwizard.bundles.version>
+        <swagger.annotations.version>1.5.21</swagger.annotations.version>
+        <jackson.core.version>2.10.0</jackson.core.version>
+        <hybernate.validator.version>6.1.2.Final</hybernate.validator.version>
+        <javax.ws.rs.web.api.version>2.0</javax.ws.rs.web.api.version>
+        <slf4jVersion>1.6.1</slf4jVersion>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- dw -->
+            <dependency>
+                <groupId>io.dropwizard</groupId>
+                <artifactId>dropwizard-core</artifactId>
+                <version>${dropwizard.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.dropwizard-bundles</groupId>
+                <artifactId>dropwizard-configurable-assets-bundle</artifactId>
+                <version>${dropwizard.bundles.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.smoketurner</groupId>
+                <artifactId>dropwizard-swagger</artifactId>
+                <version>2.0.0-1</version>
+            </dependency>
+            <!-- logging -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4jVersion}</version>
+            </dependency>
+            <!-- Internal dependency -->
+            <dependency>
+                <groupId>com.am.shipment</groupId>
+                <artifactId>shipment-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.am.shipment</groupId>
+                <artifactId>shipment-datastore</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.am.shipment</groupId>
+                <artifactId>shipment-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!-- Tests -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+            <!-- Others -->
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger.annotations.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api -->
+            <dependency>
+                <groupId>javax.ws.rs</groupId>
+                <artifactId>javax.ws.rs-api</artifactId>
+                <version>${javax.ws.rs.web.api.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
